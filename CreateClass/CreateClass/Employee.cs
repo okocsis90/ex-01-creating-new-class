@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreateClass
 {
-    class Employee : Person
+    class Employee : Person, ICloneable
     {
  
         Int32 Salary { get; set; }
@@ -19,6 +19,13 @@ namespace CreateClass
             Name = name;
             Salary = salary;
             Profession = profession;
+        }
+
+        public object Clone()
+        {
+            Employee newEmployee = (Employee)this.MemberwiseClone();
+            newEmployee.Room = new Room(Room.RoomNumber);
+            return newEmployee;
         }
 
         public override string ToString()

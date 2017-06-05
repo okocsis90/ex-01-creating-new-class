@@ -42,6 +42,13 @@ namespace CreateClass
             eufrozina.Room = new Room(1);
             Console.WriteLine(eufrozina);
 
+            Employee Kovacs = new Employee(DateTime.Now, "Géza", 1000, "léhűtő");
+            Kovacs.Room = new Room(111);
+            Employee Kovacs2 = (Employee)Kovacs.Clone();
+            Kovacs2.Room.RoomNumber = 112;
+            Console.WriteLine(Kovacs);
+            Console.WriteLine(Kovacs2);
+
             Console.ReadKey();
         }
     }

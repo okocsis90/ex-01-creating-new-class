@@ -6,49 +6,41 @@ using System.Threading.Tasks;
 
 namespace CreateClass
 {
+    public enum Gender
+    {
+        Male,
+        Female
+    };
+
     class Person
     {
-        enum Gender
-        {
-            Male,
-            Female
-        };
 
-        DateTime birthDate;
-        String name;
-        Gender gender;
+        public DateTime BirthDate { get; set; }
+        public string Name { get; set; }
+        public Gender Gender { get; set; }
 
-        public Person(DateTime birthDate, String name)
+        public Person(DateTime birthDate, string name)
         {
-            this.birthDate = birthDate;
-            this.name = name;
-        }
-
-        public void setGender(string gender)
-        {
-            if (gender == "male")
-            {
-                this.gender = Gender.Male;
-            } else if (gender == "female")
-            {
-                this.gender = Gender.Female;
-            } else
-            {
-                Console.WriteLine("Unsupported gender type. Please choose valid gender.");
-            }
+            BirthDate = birthDate;
+            Name = name;
         }
 
         public override string ToString()
         {
-            return "Name: " + this.name + " , BirthDate: " + this.birthDate + " , Gender: " + this.gender;
+            return "Name: " + Name + " , BirthDate: " + BirthDate + " , Gender: " + Gender;
         }
 
         static void Main(string[] args)
         {
             DateTime yearOfBirth = new DateTime(2010, 01, 01);
             Person bela = new Person(yearOfBirth, "Béla");
-            bela.setGender("male");
+            bela.Gender = Gender.Male;
             Console.WriteLine(bela);
+
+            Employee eufrozina = new Employee(yearOfBirth, "frozi", 21000, "zabhegyező");
+            eufrozina.Gender = Gender.Female;
+            eufrozina.Room = new Room(1);
+            Console.WriteLine(eufrozina);
 
             Console.ReadKey();
         }
